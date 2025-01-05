@@ -1,12 +1,14 @@
+// EventListener: "Dynamisiert" Seite
 document.addEventListener('DOMContentLoaded', () => {
     const userLanguage = navigator.language || navigator.userLanguage;
     const htmlElement = document.documentElement;
 
     // Dynamische Anpassung der Schriftkultur basierend auf der Benutzer-Sprache
+    // Liste kann erweitert werden
     if (userLanguage.startsWith('ar') || userLanguage.startsWith('he')) {
         htmlElement.dir = 'rtl';  // Rechts-nach-links Schriftkultur (z.B. Arabisch, Hebräisch)
     } else {
-        htmlElement.dir = 'ltr';  // Links-nach-rechts Schriftkultur (z.B. Deutsch, Englisch)
+        htmlElement.dir = 'ltr';  // Links-nach-rechts Schriftkultur (westl. Sprachen)
     }
 
     // Navigation ein- und ausklappen
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('expanded');
     });
 
-    // Funktion zur Eingabesicherung
+    // Funktion zur Eingabesicherung (Code-Injection)
     function sanitizeInput(input) {
         const element = document.createElement('div');
         element.innerText = input;
@@ -59,15 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
             direction = 'asc';
         }
         
+        // Kontrollvariable switching: Endlosschleife der Sortierung unterbinden
         while (switching) {
             switching = false;
             const rows = table.rows;
             
+            // Gehe alle Elemente der Tabelle durch 
             for (let i = 1; i < rows.length - 1; i++) {
                 shouldSwitch = false;
                 const x = rows[i].getElementsByTagName('TD')[columnIndex];
                 const y = rows[i + 1].getElementsByTagName('TD')[columnIndex];
                 
+                // if-statement: Unterscheide Sortierrichtung
+                // Variable shouldSwitch: Paarvergleich zweier Einträge
                 if (direction === 'asc') {
                     if (type === 'number') {
                         if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
@@ -95,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
+            // Tausch, wenn Paarvergleich zuvor positiv
             if (shouldSwitch) {
                 rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                 switching = true;
@@ -107,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Sortierpfeil aktualisieren
+        // Design: Sortierpfeil aktualisieren
         arrows.forEach(arrow => arrow.innerHTML = '▼');
         if (direction === 'asc') {
             headerArrow.innerHTML = '▲';
@@ -117,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Funktion zum Laden der Excel-Datei
+    // try Catch: Abfangen von Problem bei Laden der Inputfile
+    // Da Inputfile fehleranfällig ist, sind Dummy-Werte hinterlegt.
+    // Vorgang wird im Log dokumentiert
     async function loadExcelData() {
         try {
             console.log('Versuche, die Excel-Datei zu laden...');
@@ -136,11 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Country-Daten:', countryData);
             console.log('Company-Daten:', companyData);
 
-            // Aktualisieren der Tabellen
+            // Aktualisieren der Tabellen mit Daten aus Inputfile
             updateTable('countryTable', countryData);
             updateTable('companyTable', companyData);
 
-            // Anzeige der Infobox mit dem Dateistempel
+            // Anzeige der Infobox mit dem Datum/Uhrzeit der letzten Dateispeicherung Inputfile
             const fileDate = new Date(response.headers.get('Last-Modified'));
             const infobox = document.getElementById('infobox');
             infobox.textContent = `Daten aktualisiert. Stand: ${fileDate.toLocaleString('de-DE')}`;
