@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <!-- Meta-Daten -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2 Footprint</title>
@@ -8,11 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 </head>
 <body>
+    <!-- Kopfzeile -->
     <header>
         <div class="logo">
+            <!-- Logo -->
             <img src="logo.png" alt="Logo">
         </div>
+        <!-- Button, um Navigationsmenü ein- bzw. auszuklappen -->
         <button id="nav-toggle" class="nav-toggle" aria-expanded="false">☰</button>
+        <!-- Navigationsmenü: Dummyanlage, kann verlinkt werden. -->
         <nav id="nav-menu" class="nav-menu">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -32,18 +37,22 @@
     <main>
         <div id="infobox" class="infobox"></div>
         
+        <!-- Bereich für Tabelle mit Länderdaten -->
         <section id="section1">
             <h2>Länder</h2>
             <input type="text" id="countryFilter" placeholder="Filter Länder..." onkeyup="filterTable('countryTable', 0)">
+            <!-- Tabellendefinition -->
             <table id="countryTable">
+                <!-- Kopfzeile -->
                 <thead>
                     <tr>
                         <th onclick="sortTable('countryTable', 0, 'string')">Land <span class="sort-arrow" id="arrow0">▼</span></th>
                         <th onclick="sortTable('countryTable', 1, 'number')">CO2 Emissionen (kt) <span class="sort-arrow" id="arrow1">▼</span></th>
                     </tr>
                 </thead>
+                <!-- Bereich für Daten -->
                 <tbody>
-                    <!-- Statische Daten -->
+                    <!-- Statische Daten, wenn Inputfile nicht geladen werden kann -->
                     <tr>
                         <td>Deutschland</td>
                         <td>800</td>
@@ -56,6 +65,8 @@
             </table>
         </section>
         
+        <!-- Bereich für Tabelle mit Unternehmensdaten -->
+        <!-- s. Beschreibung für Ländertabelle -->
         <section id="section2">
             <h2>Unternehmen</h2>
             <input type="text" id="companyFilter" placeholder="Filter Unternehmen..." onkeyup="filterTable('companyTable', 0)">
@@ -67,7 +78,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Statische Daten -->
+                    <!-- Statische Daten, wenn Inputfile nicht geladen werden kann -->
                     <tr>
                         <td>Firma A</td>
                         <td>300</td>
@@ -81,6 +92,7 @@
         </section>
     </main>
     
+    <!-- Fußzeile: Mit rechtl. Infos befüllen. Erweiterbar mit Link -->
     <footer>
         <p>&copy; 2023 Non-Profit Organisation. Alle Rechte vorbehalten.</p>
     </footer>
