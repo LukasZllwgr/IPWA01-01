@@ -1,3 +1,4 @@
+/* Farben */
 :root {
     --primary-color: #282c34;
     --secondary-color: #333;
@@ -7,12 +8,14 @@
     --header-background-color: #444;
 }
 
+/* Hauptbereich */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Kopfzeile */
 header {
     display: flex;
     justify-content: space-between;
@@ -23,10 +26,12 @@ header {
     position: relative;
 }
 
+/* Größe Logo */
 header .logo img {
     max-height: 50px;
 }
 
+/* Button für Ein-/Ausklappen */
 .nav-toggle {
     background: none;
     border: none;
@@ -54,6 +59,7 @@ nav ul li a {
     text-decoration: none;
 }
 
+/* Sidebar-Einstellungen */
 .sidebar {
     width: 200px;
     background-color: var(--secondary-color);
@@ -136,6 +142,7 @@ th {
     position: relative;
 }
 
+/* Pfeil für Sortierung */
 .sort-arrow {
     font-size: 12px;
     margin-left: 5px;
@@ -144,6 +151,7 @@ th {
     right: 10px;
 }
 
+/* Fußzeile */
 footer {
     text-align: center;
     padding: 10px;
@@ -173,6 +181,7 @@ footer {
     }
 }
 
+/* Infobox für Inputfile */
 .infobox {
     background-color: #ffeb3b;
     color: #000;
