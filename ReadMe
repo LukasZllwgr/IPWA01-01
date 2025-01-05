@@ -1,0 +1,6 @@
+Website für CO2 Footprint Non Profit
+
+Erstellt im Rahmen der Fallstudie IPWA01-01 - Programmierung von Webanwendungsoberflächen
+
+Website enthält zwei Tabellen mit Daten von CO2 Emission (Länder und Unternehmen), welche sortier- und filterbar sind.
+Die Daten können über das Inputfile Daten_Website.xlsx eingespielt/aktualisiert werden. Ist der Import nicht möglich, werden im Code hinterlegte Daten angezeigt.
