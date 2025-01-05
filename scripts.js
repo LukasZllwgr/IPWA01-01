@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             console.log('Versuche, die Excel-Datei zu laden...');
             // Laden der Excel-Datei
-            const response = await fetch('Daten_Website.xlsx'); // Pfad zur Excel-Datei
+            const response = await fetch(Daten_Website.xlsx); // Pfad zur Excel-Datei
             console.log('Antwortstatus:', response.status);
             if (!response.ok) throw new Error('Netzwerkantwort war nicht ok');
             const data = await response.arrayBuffer();
