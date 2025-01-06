@@ -46,8 +46,8 @@
                 <!-- Kopfzeile -->
                 <thead>
                     <tr>
-                        <th onclick="sortTable('countryTable', 0, 'string')">Land <span class="sort-arrow" id="arrow0">▼</span></th>
-                        <th onclick="sortTable('countryTable', 1, 'number')">CO2 Emissionen (kt) <span class="sort-arrow" id="arrow1">▼</span></th>
+                        <th class="sortable" onclick="sortTable('countryTable', 0, 'string')">Land <span class="sort-arrow" id="arrow0" data-column-index="0" data-type="string">▼</span></th>
+                        <th class="sortable" onclick="sortTable('countryTable', 1, 'number')">CO2 Emissionen (kt) <span class="sort-arrow" id="arrow1">▼</span></th>
                     </tr>
                 </thead>
                 <!-- Bereich für Daten -->
@@ -73,8 +73,8 @@
             <table id="companyTable">
                 <thead>
                     <tr>
-                        <th onclick="sortTable('companyTable', 0, 'string')">Unternehmen <span class="sort-arrow" id="arrow2">▼</span></th>
-                        <th onclick="sortTable('companyTable', 1, 'number')">CO2 Emissionen (kt) <span class="sort-arrow" id="arrow3">▼</span></th>
+                        <th class="sortable" data-column-index="0" data-type="string">Unternehmen <span class="sort-arrow" id="arrow2">▼</span></th>
+                        <th class="sortable" data-column-index="1" data-type="number">CO2 Emissionen (kt) <span class="sort-arrow" id="arrow3">▼</span></th>
                     </tr>
                 </thead>
                 <tbody>
